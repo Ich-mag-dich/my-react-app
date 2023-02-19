@@ -74,28 +74,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="box">
-
           <p>
             <code className='code' >
               <a title="" className="button btnPush btnLightBlue" onClick={() => {
                 setCity(undefined);
                 setWeather(undefined);
               }}>{city && weather ? ("Clear!") : ("Check The Weather!")}</a>
-              {/* <button onClick={() => {
-                setCity(undefined);
-                setWeather(undefined);
-              }}>
-                Check the Weather!
-              </button> */}
             </code>
           </p>
-          {/* <form onSubmit={handleSubmit}>
-          <label>
-          City:
-            <input type="text" onChange={handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form> */}
           <div>
             {city && weather ? (
               <div>
