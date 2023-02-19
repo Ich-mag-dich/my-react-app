@@ -1,0 +1,56 @@
+.inputText {
+  padding: 10px;
+  border-radius: 0px;
+  font-weight: bold;
+  border-width: 2px;
+  border-color: #575757;
+  margin-top: 19px;
+}
+.Submit {
+  border-radius: 0px;
+  border: none;
+  outline: none;
+  color:white;
+  background-color: black;
+  padding: 0px 10px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+input.button {
+  display: block;
+  position: relative;
+  float: left;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 800;
+  text-align: center;
+  line-height: 50px;
+  color: #575757;
+  border-radius: 5px;
+  transition: all 0.2s ;
+  margin-left: 10px;
+}
+
+input.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+input.btnLightBlue {
+  background: #e2e2e2;
+}
+input.btnLightBlue.btnPush {
+  box-shadow: 0px 5px 0px 0px #b1b1b1;
+}
+input.btnLightBlue.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #b1b1b1;
+}
+
