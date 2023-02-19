@@ -10,7 +10,7 @@
   border-radius: 0px;
   border: none;
   outline: none;
-  color:white;
+  color: white;
   background-color: black;
   padding: 0px 10px;
   font-weight: bold;
@@ -35,7 +35,7 @@ input.button {
   line-height: 50px;
   color: #575757;
   border-radius: 5px;
-  transition: all 0.2s ;
+  transition: all 0.2s;
   margin-left: 10px;
 }
 
@@ -53,4 +53,3 @@ input.btnLightBlue.btnPush {
 input.btnLightBlue.btnPush:hover {
   box-shadow: 0px 0px 0px 0px #b1b1b1;
 }
-
