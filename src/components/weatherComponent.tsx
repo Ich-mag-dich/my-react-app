@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { ReactNode, useCallback, useState } from "react";
 import "./css/weatherCp.css";
 import { WeatherIcons } from "../App";
-import { Cookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 
 const cookies = new Cookies();
 
@@ -18,15 +18,23 @@ const marginAutoLeft = {
   marginLeft: "10px",
 };
 
-function WeatherDiv(props: any) {
+interface IWeatherProps {
+  weather : any
+}
+
+function WeatherDiv(props: IWeatherProps) {
   const { weather } = props;
 
   const unixTimeSr = weather?.sys?.sunrise;
   const unixTimeSs = weather?.sys?.sunset;
   const dateSr = new Date(unixTimeSr * 1000);
   const dateSs = new Date(unixTimeSs * 1000);
+  
+  const [cookies, setCookie] = useCookies(["city"]);
 
-  const iconname: string = weather.weather[0].icon as string;
+
+ 
+  const iconname: string = weather.weather[0]?.icon ?? "";
   return (
     <div className="weatherCpBox">
       <div className="nameBox">
@@ -43,32 +51,19 @@ function WeatherDiv(props: any) {
         <button
           className="bookmark"
           onClick={() => {
-            let oldCookie: any[] = [];
-            try {
-              for (const i of cookies.get("city")) {
-                oldCookie.push(i);
-              }
-            } catch (e) {
-              console.log(e);
-            }
+            let oldCookie: string[] = [...cookies.city];
+
             if (!oldCookie.includes(weather?.name)) {
               oldCookie.push(weather?.name);
               alert("즐겨찾기에 추가가 완료되었습니다.");
             } else {
               const indexA = oldCookie.indexOf(weather?.name);
+              //이건 뭐노?
               if (indexA > -1) {
-                oldCookie.splice(indexA, 1);
-                document.querySelectorAll(".fav").forEach((i: any) => {
-                  if (i.innerText === weather?.name) {
-                    i.remove();
-                  }
-                });
+                delete oldCookie[indexA]
               }
             }
-
-            // oldCookie.push(cookies.get("city"))
-            cookies.set("city", oldCookie);
-            console.log(cookies.get("city"));
+            setCookie("city", oldCookie);
           }}
         >
           Bookmark
@@ -77,6 +72,7 @@ function WeatherDiv(props: any) {
       <span className="weatherinfo">Weather Info</span>
 
       <div className="divBox">
+
         <div className="inBoxDiv">
           <img alt="" className="icons" src={"icon/temp.svg"} />
           <span className="inSpan" style={marginAutoLeft}>
@@ -90,6 +86,7 @@ function WeatherDiv(props: any) {
             </span>
           </span>
         </div>
+        
         <div className="inBoxDiv">
           <img alt="" className="icons" src={"icon/humidity.svg"} />
           <span className="inSpan">
@@ -115,5 +112,7 @@ function WeatherDiv(props: any) {
     </div>
   );
 }
+
+
 
 export default WeatherDiv;

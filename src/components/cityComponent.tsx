@@ -1,16 +1,25 @@
+import axios from "axios";
 import React from "react";
+import { useForm } from "react-hook-form";
 import "./css/cityCp.css";
 
-function CitiDiv(props: any) {
-  const { handleSubmit, handleChange } = props;
+interface ICityProps {
+  handleSubmit : (e : any) => void
+}
+
+
+function CitiDiv(props : ICityProps) {
+  const { register, handleSubmit } = useForm();
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(props.handleSubmit)}>
       <label>
         <input
           className="inputText"
           type="text"
           placeholder="City"
-          onChange={handleChange}
+          {...register("city")}
         />
       </label>
       <input
