@@ -22,6 +22,7 @@ interface IWeatherProps {
   weather : any
 }
 
+
 function WeatherDiv(props: IWeatherProps) {
   const { weather } = props;
 
@@ -31,6 +32,14 @@ function WeatherDiv(props: IWeatherProps) {
   const dateSs = new Date(unixTimeSs * 1000);
   
   const [cookies, setCookie] = useCookies(["city"]);
+
+  const saveCookies = (name: any, value: string[]) => {
+    const nextYear = new Date();
+     nextYear.setFullYear(nextYear.getFullYear() + 1);
+    setCookie(name, value, {
+      expires: new Date(nextYear),
+    });
+  };
 
 
  
@@ -51,19 +60,27 @@ function WeatherDiv(props: IWeatherProps) {
         <button
           className="bookmark"
           onClick={() => {
-            let oldCookie: string[] = [...cookies.city];
-
+            let oldCookie :string[];
+            if (Symbol.iterator in Object(cookies?.city)) {
+              console.log("iter");
+              oldCookie = [...cookies.city];
+            } else {
+              console.log("not");
+              oldCookie = [cookies.city];
+            }
+           
             if (!oldCookie.includes(weather?.name)) {
               oldCookie.push(weather?.name);
               alert("즐겨찾기에 추가가 완료되었습니다.");
             } else {
               const indexA = oldCookie.indexOf(weather?.name);
               //이건 뭐노?
+              //ㄴ 북마크 삭제하는거 ㅇㅇ;
               if (indexA > -1) {
                 delete oldCookie[indexA]
               }
             }
-            setCookie("city", oldCookie);
+            saveCookies("city", oldCookie);
           }}
         >
           Bookmark
