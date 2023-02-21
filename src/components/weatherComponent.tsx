@@ -62,10 +62,8 @@ function WeatherDiv(props: IWeatherProps) {
           onClick={() => {
             let oldCookie :string[];
             if (Symbol.iterator in Object(cookies?.city)) {
-              console.log("iter");
               oldCookie = [...cookies.city];
             } else {
-              console.log("not");
               oldCookie = [cookies.city];
             }
            
@@ -79,6 +77,12 @@ function WeatherDiv(props: IWeatherProps) {
               if (indexA > -1) {
                 delete oldCookie[indexA]
               }
+              oldCookie.forEach((e)=> {
+                if(e === null) {
+                  console.log(oldCookie.indexOf(e), e);
+                  oldCookie.splice(oldCookie.indexOf(e), 1);
+                }
+              });
             }
             saveCookies("city", oldCookie);
           }}
