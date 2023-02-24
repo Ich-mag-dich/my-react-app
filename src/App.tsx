@@ -54,6 +54,7 @@ function App() {
   const [weather, setWeather]: any = useState();
   const [cookies, setCookie] = useCookies<string>(["city"]);
 
+
   /*   const reanderingB = async (city: any) => {
     await setCity(city);
     // setWeather(await getWeather(city))
