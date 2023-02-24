@@ -126,7 +126,7 @@ function App() {
                   setWeather(undefined);
                 }}
               >
-                {city && weather ? "Clear!" : "Check The Weather!"}
+                {weather ? "Clear!" : "Check The Weather!"}
               </a>
             </code>
           </p>
