@@ -2,13 +2,14 @@
 /* eslint-disable no-loop-func */
 import React, {
   useState,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   useEffect,
-  MouseEventHandler,
 } from "react";
 import axios from "axios";
 import "./App.css";
 import WeatherDiv from "./components/weatherComponent";
 import CityDiv from "./components/cityComponent";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Cookies, useCookies } from "react-cookie";
 
 type ObjType = {
@@ -49,50 +50,13 @@ export const WeatherIcons: ObjType = {
 
 function App() {
   console.log("rendering");
-  let cookieBool = false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [city, setCity] = useState<string>(undefined);
   const [weather, setWeather]: any = useState();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie] = useCookies<string>(["city"]);
 
 
-  /*   const reanderingB = async (city: any) => {
-    await setCity(city);
-    // setWeather(await getWeather(city))
-  }; */
-  /* const renderingA = () => {
-    const result = [];
-    for (const i of cookies.get("city")) {
-      console.log(i)
-      result.push(
-        <span
-          className="fav"
-          onClick={
-            (e: any) => {
-              setCity(i);
-              if (countNum === 1) {
-                handleSubmit(i);
-                document.querySelectorAll(".fav").forEach((e: any) => {
-                  if (e.innerHTML === ` ${i} `) {
-                    // console.log("asd");
-                    if (i !== weather?.name) {
-                      setTimeout(() => {
-                        e.click();
-                        countNum = 0;
-                      }, 100);
-                    }
-                  }
-                });
-              }
-            }
-          }
-        >
-          {" "}
-          {i}{" "}
-        </span>
-      );
-    }
-    return result;
-  }; */
   const OnSubmit = (data : any) => {
     getWeather(data.city)
   }
