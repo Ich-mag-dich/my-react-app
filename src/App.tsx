@@ -66,8 +66,10 @@ function App() {
         setWeather(x.data);
         throw Error(x.data);
       }).catch(e => {
-        console.log(e);
-        alert(`Error: ${e.response.data.message}`);
+        try {
+          console.log(e);
+          alert(`Error: ${e.response.data.message}`);
+        } catch (error) {}
       })
       
   }
