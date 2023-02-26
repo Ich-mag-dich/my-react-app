@@ -25,7 +25,6 @@
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
-   
   "eslintConfig": {
     "extends": [
       "react-app",
