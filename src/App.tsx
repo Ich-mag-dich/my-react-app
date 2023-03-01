@@ -28,6 +28,7 @@ type ObjType = {
   "10n": string;
   "11d": string;
   "11n": string;
+  "50n": string;
 };
 
 export const WeatherIcons: ObjType = {
@@ -56,26 +57,29 @@ function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie] = useCookies<string>(["city"]);
 
-
-  const OnSubmit = (data : any) => {
-    getWeather(data.city)
-  }
-  const getWeather = (city : string ) => {
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=72dc22879afa657a9417a3eb73526904`).then((x) =>{
+  const OnSubmit = (data: any) => {
+    getWeather(data.city);
+  };
+  const getWeather = (city: string) => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=72dc22879afa657a9417a3eb73526904`
+      )
+      .then((x) => {
         console.log(x.data);
         setWeather(x.data);
         throw Error(x.data);
-      }).catch(e => {
+      })
+      .catch((e) => {
         try {
           console.log(e);
           alert(`Error: ${e.response.data.message}`);
         } catch (error) {}
-      })
-      
-  }
-  const handleOnClick = (e: any , city_name : string) => {
-    getWeather(city_name.toLowerCase())
-  };  
+      });
+  };
+  const handleOnClick = (e: any, city_name: string) => {
+    getWeather(city_name.toLowerCase());
+  };
 
   return (
     <div className="App">
@@ -108,18 +112,19 @@ function App() {
           {cookies.city ? (
             cookies.city.map((x: string, i: number) => {
               return (
-                <div key={i} className="fav" onClick={(e) => handleOnClick(e,x)}>
+                <div
+                  key={i}
+                  className="fav"
+                  onClick={(e) => handleOnClick(e, x)}
+                >
                   {x}
                 </div>
               );
-            }
-            
-            )
-
-            ) : (
-              <></>
-              )}
-              </div>
+            })
+          ) : (
+            <></>
+          )}
+        </div>
       </header>
     </div>
   );
