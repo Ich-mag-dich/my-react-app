@@ -1,6 +1,6 @@
 # Weather app
 
-with react
+with react and vite
 
 #### Available Scripts
 
