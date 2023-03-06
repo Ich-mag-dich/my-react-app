@@ -1,7 +1,6 @@
 # Weather app
 
 with react and vite
-auto build 시도중
 
 #### Available Scripts
 
