@@ -28,5 +28,5 @@ jobs:
     - name: Install dependencies
       run: yarn install
     - run: echo "action test"
-    - run: yarn run build --if-present
+    - run: yarn run build 
     - run: sudo pm2 restart 0 --update-env
