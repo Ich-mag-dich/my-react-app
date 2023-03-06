@@ -24,9 +24,18 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER_NAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
         node-version: ${{ matrix.node-version }}
+        script_stop: true
+        script: |
+          whoami
+          ls -al
+          echo "hoho" 
     - name: Install dependencies
       run: yarn install
     - run: echo "action test"
     - run: yarn run build 
-    - run: sudo pm2 restart 0 --update-env
+#   - run: sudo pm2 restart 0 --update-env
