@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-      run: yarn install -frozen-lockfile
+      run: yarn add -frozen-lockfile
     - run: echo "action test"
     - run: yarn run build --if-present
     - run: sudo pm2 restart 0 --update-env
