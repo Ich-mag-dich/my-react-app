@@ -50,7 +50,6 @@ export const WeatherIcons: ObjType = {
 };
 
 function App() {
-  console.log("rendering");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [city, setCity] = useState<string>(undefined);
   const [weather, setWeather]: any = useState();
@@ -66,7 +65,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=72dc22879afa657a9417a3eb73526904`
       )
       .then((x) => {
-        console.log(x.data);
+        // console.log(x.data);
         setWeather(x.data);
         throw Error(x.data);
       })
@@ -74,7 +73,7 @@ function App() {
         try {
           console.log(e);
           alert(`Error: ${e.response.data.message}`);
-        } catch (error) {}
+        } catch (error) { }
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
