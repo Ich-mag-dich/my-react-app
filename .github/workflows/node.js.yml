@@ -23,7 +23,7 @@ jobs:
             cd ~/dev/my-weather-app
             sudo rm yarn.lock
             sudo git pull
-            sudo rm ./src/index.html
+            sudo rm ./public/index.html
             sudo yarn install
             sudo yarn build
             sudo pm2 restart 0 --update-env
