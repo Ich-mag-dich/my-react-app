@@ -5,24 +5,24 @@ name: SERVER distribute
 
 on:
   push:
-    branches: [ "main" ]
- 
+    branches: ["main"]
+
 jobs:
   build:
-
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER_NAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          cd ~/dev/my-weather-app
-          sudo git pull
-          sudo yarn install
-          sudo yarn build
-          sudo pm2 reload 0 --update-env
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/dev/my-weather-app
+            sudo git fetch
+            sudo git pull
+            sudo yarn install
+            sudo yarn build
+            sudo pm2 reload 0 --update-env
