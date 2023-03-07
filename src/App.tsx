@@ -51,7 +51,7 @@ export const WeatherIcons: ObjType = {
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [city, setCity] = useState<string>(undefined);
+  const [city, setCity] = useState<string>(String);
   const [weather, setWeather]: any = useState();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie] = useCookies<string>(["city"]);
@@ -71,9 +71,9 @@ function App() {
       })
       .catch((e) => {
         try {
-          console.log(e);
+          console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
-        } catch (error) { }
+        } catch (error) {}
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
@@ -89,8 +89,8 @@ function App() {
               <a
                 className="button btnPush btnLightBlue"
                 onClick={() => {
-                  setCity(undefined);
-                  setWeather(undefined);
+                  setCity(String);
+                  setWeather(String);
                 }}
               >
                 {weather ? "Clear!" : "Check The Weather!"}

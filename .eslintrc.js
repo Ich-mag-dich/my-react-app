@@ -1,39 +1,32 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     commonjs: true,
     es2021: true,
-    node: true
+    node: true,
   },
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       node: {
-        extensions: ['.ts', '.tsx']
-      }
-    }
+        extensions: [".ts", ".tsx"],
+      },
+    },
   },
   extends: [
-    'airbnb',
-    'plugin:react/recommended',
-    'standard-with-typescript',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended',
+    "airbnb",
+    "plugin:react/recommended",
+    "standard-with-typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
-    ecmaVersion: 'latest'
+    parser: "@typescript-eslint/parser",
+    ecmaVersion: "latest",
   },
-  plugins: [
-    'react', ,
-    "@typescript-eslint",
-    'eslint-plugin-prettier',
-    'eslint-config-prettier'
-  ],
-  rules: {
-  },
-  "ignorePatterns": ["build", "dist", "public"]
-}
+  plugins: ["react", "@typescript-eslint", "prettier"],
+  rules: {},
+  ignorePatterns: ["build", "dist", "public"],
+};
