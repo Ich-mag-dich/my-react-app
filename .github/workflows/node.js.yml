@@ -21,7 +21,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/dev/my-weather-app
-            sudo git fetch
+            sudo rm yarn.lock
             sudo git pull
             sudo yarn install
             sudo yarn build
