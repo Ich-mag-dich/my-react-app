@@ -21,7 +21,6 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint'
   ],
   overrides: [
   ],
@@ -29,9 +28,10 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   plugins: [
-    'react',
-    '@typescript-eslint',
-    'prettier'
+    'react', ,
+    "@typescript-eslint",
+    'eslint-plugin-prettier',
+    'eslint-config-prettier'
   ],
   rules: {
   },
