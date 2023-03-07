@@ -25,4 +25,4 @@ jobs:
             sudo git pull
             sudo yarn install
             sudo yarn build
-            sudo pm2 reload 0 --update-env
+            sudo pm2 restart 0 --update-env
