@@ -23,6 +23,6 @@ jobs:
             cd ~/dev/my-weather-app
             sudo rm yarn.lock
             sudo git pull
-            sudo yarn install
-            sudo yarn build
+            sudo npm install
+            sudo npm build
             sudo pm2 restart 0 --update-env
