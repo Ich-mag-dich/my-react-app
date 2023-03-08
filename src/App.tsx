@@ -48,21 +48,24 @@ export const WeatherIcons: ObjType = {
   "11n": "icon/storm.svg",
   "50n": "icon/cloudy.svg",
 };
-
+const appid: string = "72dc22879afa657a9417a3eb73526904";
+const appid2: string = "94f4155f866dc90047fcbff89d108fe2";
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [city, setCity] = useState<string>(undefined);
   const [weather, setWeather]: any = useState();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie] = useCookies<string>(["city"]);
+  const [country, setCountry]: any = useState();
 
   const OnSubmit = (data: any) => {
-    getWeather(data.city);
+    // getWeather(data.city);
+    getLatLon(data.city);
   };
-  const getWeather = (city: string) => {
+  const getWeather = (lat: string, lon: string) => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=72dc22879afa657a9417a3eb73526904`
+        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appid}`
       )
       .then((x) => {
         // console.log(x.data);
@@ -76,8 +79,36 @@ function App() {
         } catch (error) {}
       });
   };
+  const getLatLon = async (city: string) => {
+    axios
+      .get(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${appid}`
+      )
+      .then(async (x) => {
+        console.log(x.data);
+        try {
+          const lat = x.data[0].lat;
+          const lon = x.data[0].lon;
+          const countryName: string = x.data[0].country as string;
+          setCountry(countryName);
+          setCity(x.data[0].name);
+          await getWeather(lat, lon);
+          console.log(lat, lon);
+        } catch (e) {
+          console.log("error");
+          alert("Error: 지역명을 찾지 못했습니다.");
+          throw Error(x.data);
+        }
+      })
+      .catch((e) => {
+        try {
+          console.log(e.response.data.message);
+          alert(`Error: ${e.response.data.message}`);
+        } catch (e) {}
+      });
+  };
   const handleOnClick = (e: any, city_name: string) => {
-    getWeather(city_name.toLowerCase());
+    getLatLon(city_name.toLowerCase());
   };
 
   return (
@@ -100,7 +131,11 @@ function App() {
           <div>
             {weather ? (
               <div>
-                <WeatherDiv weather={weather} />
+                <WeatherDiv
+                  weather={weather}
+                  countryName={country}
+                  cityName={city}
+                />
               </div>
             ) : (
               <CityDiv handleSubmit={OnSubmit} />
