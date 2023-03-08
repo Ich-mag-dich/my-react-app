@@ -28,6 +28,9 @@ type ObjType = {
   "10n": string;
   "11d": string;
   "11n": string;
+  "13d": string;
+  "13n": string;
+  "50d": string;
   "50n": string;
 };
 
@@ -46,7 +49,10 @@ export const WeatherIcons: ObjType = {
   "10n": "icon/rain-night.svg",
   "11d": "icon/storm.svg",
   "11n": "icon/storm.svg",
-  "50n": "icon/cloudy.svg",
+  "13d": "icon/snow.svg",
+  "13n": "icon/snow.svg",
+  "50d": "icon.cloudy.svg",
+  "50n": "icon/cloudy-night.svg",
 };
 const appid: string = "72dc22879afa657a9417a3eb73526904";
 const appid2: string = "94f4155f866dc90047fcbff89d108fe2";
@@ -60,12 +66,13 @@ function App() {
 
   const OnSubmit = (data: any) => {
     // getWeather(data.city);
+    console.log("on submit");
     getLatLon(data.city);
   };
   const getWeather = (lat: string, lon: string) => {
     axios
       .get(
-        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appid}`
+        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appid2}`
       )
       .then((x) => {
         // console.log(x.data);
@@ -79,20 +86,30 @@ function App() {
         } catch (error) {}
       });
   };
-  const getLatLon = async (city: string) => {
+  const getLatLon = (city: string) => {
     axios
       .get(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${appid}`
       )
-      .then(async (x) => {
+      .then((x) => {
         console.log(x.data);
         try {
           const lat = x.data[0].lat;
           const lon = x.data[0].lon;
+          getWeather(lat, lon);
           const countryName: string = x.data[0].country as string;
-          setCountry(countryName);
-          setCity(x.data[0].name);
-          await getWeather(lat, lon);
+          const stateName: string = x.data[0].state as string;
+          if (stateName === "England") {
+            setCountry(stateName);
+          } else {
+            setCountry(countryName);
+          }
+
+          if (countryName === "KR") {
+            setCity(x.data[0]?.local_names?.ko);
+          } else {
+            setCity(x.data[0]?.name);
+          }
           console.log(lat, lon);
         } catch (e) {
           console.log("error");
@@ -108,6 +125,7 @@ function App() {
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
+    console.log("handleonclick");
     getLatLon(city_name.toLowerCase());
   };
 
@@ -124,12 +142,12 @@ function App() {
                   setWeather(undefined);
                 }}
               >
-                {weather ? "Clear!" : "Check The Weather!"}
+                {weather && city ? "Clear!" : "Check The Weather!"}
               </a>
             </code>
           </p>
           <div>
-            {weather ? (
+            {weather && city ? (
               <div>
                 <WeatherDiv
                   weather={weather}

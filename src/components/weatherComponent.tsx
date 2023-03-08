@@ -41,7 +41,13 @@ function WeatherDiv(props: IWeatherProps) {
       expires: new Date(nextYear),
     });
   };
-
+  const hour = (time: number): string => {
+    if (time < 10) {
+      return `0${time}`;
+    } else {
+      return `${time}`;
+    }
+  };
   const iconname: string = weather?.current?.weather[0]?.icon ?? "";
   console.log(cityName, countryName);
   return (
@@ -107,11 +113,11 @@ function WeatherDiv(props: IWeatherProps) {
           <span className="inSpan" style={marginAutoLeft}>
             <span className="ininSpan">
               {" "}
-              {dateSr.getHours()} : {dateSr.getMinutes()} | Sunrise
+              {hour(dateSr.getHours())} : {hour(dateSr.getMinutes())} | Sunrise
             </span>
             <span className="ininSpan">
               {" "}
-              {dateSs.getHours()} : {dateSs.getMinutes()} | Sunset
+              {hour(dateSs.getHours())} : {hour(dateSs.getMinutes())} | Sunset
             </span>
           </span>
         </div>

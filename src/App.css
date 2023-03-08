@@ -92,11 +92,19 @@ a.btnLightBlue {
   background: #e2e2e2;
 }
 
+/* .fav {
+  color: #353535;
+  cursor: pointer;
+} */
 .fav {
   color: #353535;
   cursor: pointer;
+  width: 80%;
+  font-size: 25px;
+  border-color: #d7d7d7;
+  border-bottom-style: solid;
+  border-width: thin;
 }
-
 .box3 {
   margin-bottom: 30px;
 }

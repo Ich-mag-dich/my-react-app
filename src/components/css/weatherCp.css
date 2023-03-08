@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Noto+Sans+Mono:wght@500&display=swap");
 .weatherCpBox {
   display: flex;
   flex-direction: column;
@@ -23,6 +24,7 @@
   text-transform: capitalize;
   font-size: 28px;
   font-weight: bold;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .nameBox {
   display: flex;
@@ -74,6 +76,7 @@
   width: 100px;
   height: 100px;
   margin: 5px auto;
+  margin-bottom: -20px;
 }
 .icons {
   width: 36px;
