@@ -21,6 +21,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  transition: all 0.5s;
 }
 
 .App-link {
@@ -60,7 +61,7 @@ a.button {
   position: relative;
   /* float: left; */
   padding: 10px;
-  margin: 10px 20px 10px 0;
+  margin: 10px 20px 10px 20px;
   font-weight: 600;
   text-align: center;
   line-height: 50px;
@@ -83,6 +84,10 @@ a.button {
   .fav:hover {
     transition: 0.5s;
     background-color: #cccccc;
+  }
+  .clearBookmarks:hover {
+    cursor: pointer;
+    background-color: #aaaaaa94;
   }
 }
 a.btnLightBlue.btnPush {
@@ -107,4 +112,38 @@ a.btnLightBlue {
 }
 .box3 {
   margin-bottom: 30px;
+  transition: all 0.5s;
+}
+.clearBookmarks {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  line-height: 50px;
+  color: #575757;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #e2e2e2;
+  transition: all 0.2s;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.box4 {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 380px;
+    padding: 20px 10px;
+    margin: auto;
+    border-radius: 4px;
 }

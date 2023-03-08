@@ -63,7 +63,7 @@ function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie] = useCookies<string>(["city"]);
   const [country, setCountry]: any = useState();
-
+  const [opacityNum, setOpacity] = useState(1);
   const OnSubmit = (data: any) => {
     // getWeather(data.city);
     console.log("on submit");
@@ -77,16 +77,19 @@ function App() {
       .then((x) => {
         // console.log(x.data);
         setWeather(x.data);
+        setOpacity(1);
         throw Error(x.data);
       })
       .catch((e) => {
         try {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
-        } catch (error) {}
+          setOpacity(1);
+        } catch (error) { }
       });
   };
   const getLatLon = (city: string) => {
+    setOpacity(0.5);
     axios
       .get(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${appid}`
@@ -114,6 +117,8 @@ function App() {
         } catch (e) {
           console.log("error");
           alert("Error: 지역명을 찾지 못했습니다.");
+
+          setOpacity(1);
           throw Error(x.data);
         }
       })
@@ -121,7 +126,8 @@ function App() {
         try {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
-        } catch (e) {}
+          setOpacity(1);
+        } catch (e) { }
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
@@ -131,7 +137,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" style={{ opacity: opacityNum }} >
         <div className="box box3">
           <p>
             <code className="code">
@@ -160,10 +166,13 @@ function App() {
             )}
           </div>
         </div>
-        <div className="box box2">
-          {cookies.city ? (
-            cookies.city.map((x: string, i: number) => {
+
+        {cookies.city[0] ? (
+
+          <div className="box box2">
+            {cookies.city.map((x: string, i: number) => {
               return (
+
                 <div
                   key={i}
                   className="fav"
@@ -172,11 +181,11 @@ function App() {
                   {x}
                 </div>
               );
-            })
-          ) : (
-            <></>
-          )}
-        </div>
+            })}</div>
+        ) : (
+          <div className="box4"></div>
+        )}
+
       </header>
     </div>
   );
