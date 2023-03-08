@@ -63,10 +63,10 @@ function WeatherDiv(props: IWeatherProps) {
       </div>
       <div className="minMax">
         <span className="ininSpan">
-          Max : {(weather?.daily[0]?.temp?.max - 271).toFixed(1)}
+          Max : {(weather?.daily[0]?.temp?.max - 271).toFixed(1)}°C
         </span>
         <span className="ininSpan">
-          Min : {(weather?.daily[0]?.temp?.min - 273).toFixed(1)}
+          Min : {(weather?.daily[0]?.temp?.min - 273).toFixed(1)}°C
         </span>
       </div>
       <span className="nameCountry">
