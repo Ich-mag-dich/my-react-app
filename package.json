@@ -40,7 +40,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "codeSpaceStart": "BROWSER=none WDS_SOCKET_PORT=0 react-scripts start",
-    "test": "BROWSER=none WDS_SOCKET_PORT=0 vite"
+    "test": "vite --host 0.0.0.0"
   },
   "eslintConfig": {
     "extends": [
