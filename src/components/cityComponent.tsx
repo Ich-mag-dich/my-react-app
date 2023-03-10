@@ -4,13 +4,12 @@ import "./css/cityCp.css";
 import { Cookies, useCookies } from "react-cookie";
 
 interface ICityProps {
-  handleSubmit: (e: any) => void
+  handleSubmit: (e: any) => void;
 }
 
-
-function CitiDiv(props: ICityProps) {
+function CityDiv(props: ICityProps) {
   const { register, handleSubmit } = useForm();
-  const [cookies, setCookies] = useCookies(["city"])
+  const [cookies, setCookies] = useCookies(["city"]);
   const test111 = () => {
     let oldCookie: string[];
     if (Symbol.iterator in Object(cookies?.city)) {
@@ -20,33 +19,34 @@ function CitiDiv(props: ICityProps) {
     }
     // console.log(oldCookie.at(0))
     if (oldCookie.at(0) === undefined) {
-      return false
+      return false;
     } else {
-      return true
+      return true;
     }
-  }
+  };
   const removeAllCookie = () => {
-    console.log(test111())
+    console.log(test111());
     if (test111()) {
       const nullCookie: string[] = [];
-      setCookies("city", nullCookie)
-      alert("모든 즐겨찾기를 삭제했습니다.")
+      setCookies("city", nullCookie);
+      alert("모든 즐겨찾기를 삭제했습니다.");
     } else {
-      alert("삭제할 즐겨찾기가 없습니다.")
+      alert("삭제할 즐겨찾기가 없습니다.");
     }
-  }
+  };
   return (
     <div>
       <p>
         <a
           className="clearBookmarks "
           onClick={() => {
-            test111()
-            removeAllCookie()
+            test111();
+            removeAllCookie();
           }}
         >
           Clear Bookmarks
-        </a></p>
+        </a>
+      </p>
       <form onSubmit={handleSubmit(props.handleSubmit)}>
         <label>
           <input
@@ -66,4 +66,4 @@ function CitiDiv(props: ICityProps) {
   );
 }
 
-export default CitiDiv;
+export default CityDiv;

@@ -58,12 +58,28 @@ const appid: string = "72dc22879afa657a9417a3eb73526904";
 const appid2: string = "94f4155f866dc90047fcbff89d108fe2";
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [city, setCity] = useState<string>(undefined);
+  const [city, setCity] = useState<string>();
   const [weather, setWeather]: any = useState();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie] = useCookies<string>(["city"]);
   const [country, setCountry]: any = useState();
   const [opacityNum, setOpacity] = useState(1);
+  const saveCookies = (name: any, value: string[]) => {
+    const nextYear = new Date();
+    nextYear.setFullYear(nextYear.getFullYear() + 1);
+    setCookie(name, value, {
+      expires: new Date(nextYear),
+    });
+  };
+  let cookieTrue;
+  try {
+    cookieTrue = cookies.city[0];
+  } catch (error) {
+    console.log("asd");
+    saveCookies("city", []);
+    cookieTrue = cookies.city[0];
+    location.reload();
+  }
   const OnSubmit = (data: any) => {
     // getWeather(data.city);
     console.log("on submit");
@@ -74,18 +90,18 @@ function App() {
       .get(
         `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appid2}`
       )
-      .then((x) => {
+      .then((x: any) => {
         // console.log(x.data);
         setWeather(x.data);
         setOpacity(1);
         throw Error(x.data);
       })
-      .catch((e) => {
+      .catch((e: any) => {
         try {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
           setOpacity(1);
-        } catch (error) { }
+        } catch (error) {}
       });
   };
   const getLatLon = (city: string) => {
@@ -94,7 +110,7 @@ function App() {
       .get(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${appid}`
       )
-      .then((x) => {
+      .then((x: any) => {
         console.log(x.data);
         try {
           const lat = x.data[0].lat;
@@ -122,12 +138,12 @@ function App() {
           throw Error(x.data);
         }
       })
-      .catch((e) => {
+      .catch((e: any) => {
         try {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
           setOpacity(1);
-        } catch (e) { }
+        } catch (e) {}
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
@@ -137,7 +153,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header" style={{ opacity: opacityNum }} >
+      <header className="App-header" style={{ opacity: opacityNum }}>
         <div className="box box3">
           <p>
             <code className="code">
@@ -167,12 +183,10 @@ function App() {
           </div>
         </div>
 
-        {cookies.city[0] ? (
-
+        {cookieTrue ? (
           <div className="box box2">
             {cookies.city.map((x: string, i: number) => {
               return (
-
                 <div
                   key={i}
                   className="fav"
@@ -181,11 +195,11 @@ function App() {
                   {x}
                 </div>
               );
-            })}</div>
+            })}
+          </div>
         ) : (
           <div className="box4"></div>
         )}
-
       </header>
     </div>
   );
