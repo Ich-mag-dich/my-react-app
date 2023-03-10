@@ -21,7 +21,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/dev/my-weather-app
-            sudo rm yarn.lock
+            sudo rm package-lock.json
             sudo git pull
             sudo npm install
             sudo npm run build
