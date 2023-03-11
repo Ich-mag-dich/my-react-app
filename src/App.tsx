@@ -75,7 +75,7 @@ function App() {
   try {
     cookieTrue = cookies.city[0];
   } catch (error) {
-    console.log("asd");
+    console.log("asde");
     saveCookies("city", []);
     cookieTrue = cookies.city[0];
     location.reload();
