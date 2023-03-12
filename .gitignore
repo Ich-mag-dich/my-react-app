@@ -23,6 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 server.js
+route.js
 
 .yarnrc.yml
 .yarn
