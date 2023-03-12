@@ -1,7 +1,32 @@
 .HeaderDiv {
-  width: auto;
+  display: block;
+  -webkit-box-align: center;
+  width: 380px;
+  padding: 20px 10px;
+  margin: auto;
+  border-radius: 4px;
+  box-shadow: rgb(85 85 85) 0px 3px 6px 0px;
+  background: white;
+  font-family: Montserrat, source-code-pro, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 }
 .HeaderBtn {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 50px;
+  color: #575757;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #e2e2e2;
+  font-style: normal;
+  text-decoration: none;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+
+@media (min-width: 800px) {
+  .HeaderBtn:hover {
+    cursor: pointer;
+    background-color: #aaaaaa94;
+  }
 }
