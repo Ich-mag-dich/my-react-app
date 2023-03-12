@@ -5,9 +5,9 @@ with react and vite
 #### Available Scripts
 
 ```node
-yarn start
-yarn build
-yarn serve
+npm start
+npm build
+npm serve
 ```
 
 #### package.json
