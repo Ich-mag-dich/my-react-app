@@ -5,10 +5,14 @@ import React, {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   useEffect,
 } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import WeatherDiv from "./components/weatherComponent";
 import CityDiv from "./components/cityComponent";
+import Test from "./components/test";
+import NotFound from "./components/notFound";
+import HeaderPage from "./components/HeaderPage";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Cookies, useCookies } from "react-cookie";
 
@@ -152,56 +156,70 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header" style={{ opacity: opacityNum }}>
-        <div className="box box3">
-          <p>
-            <code className="code">
-              <a
-                className="button btnPush btnLightBlue"
-                onClick={() => {
-                  setCity(undefined);
-                  setWeather(undefined);
-                }}
-              >
-                {weather && city ? "Clear!" : "Check The Weather!"}
-              </a>
-            </code>
-          </p>
-          <div>
-            {weather && city ? (
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header" style={{ opacity: opacityNum }}>
+          <HeaderPage></HeaderPage>
+        </header>
+        <Routes>
+          <Route
+            path="/"
+            element={
               <div>
-                <WeatherDiv
-                  weather={weather}
-                  countryName={country}
-                  cityName={city}
-                />
-              </div>
-            ) : (
-              <CityDiv handleSubmit={OnSubmit} />
-            )}
-          </div>
-        </div>
-
-        {cookieTrue ? (
-          <div className="box box2">
-            {cookies.city.map((x: string, i: number) => {
-              return (
-                <div
-                  key={i}
-                  className="fav"
-                  onClick={(e) => handleOnClick(e, x)}
-                >
-                  {x}
+                <div className="box box3">
+                  <p>
+                    <code className="code">
+                      <a
+                        className="button btnPush btnLightBlue"
+                        onClick={() => {
+                          setCity(undefined);
+                          setWeather(undefined);
+                        }}
+                      >
+                        {weather && city ? "Clear!" : "Check The Weather!"}
+                      </a>
+                    </code>
+                  </p>
+                  <div>
+                    {weather && city ? (
+                      <div>
+                        <WeatherDiv
+                          weather={weather}
+                          countryName={country}
+                          cityName={city}
+                        />
+                      </div>
+                    ) : (
+                      <CityDiv handleSubmit={OnSubmit} />
+                    )}
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="box4"></div>
-        )}
-      </header>
-    </div>
+
+                {cookieTrue ? (
+                  <div className="box box2">
+                    {cookies.city.map((x: string, i: number) => {
+                      return (
+                        <div
+                          key={i}
+                          className="fav"
+                          onClick={(e) => handleOnClick(e, x)}
+                        >
+                          {x}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="box4"></div>
+                )}
+              </div>
+            }
+          ></Route>
+          <Route path="/test" element={<Test></Test>}></Route>
+          <Route path="*" element={<NotFound></NotFound>}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
