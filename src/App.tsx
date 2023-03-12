@@ -157,8 +157,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <header className="App-header" style={{ opacity: opacityNum }}>
+      <div className="App" style={{ opacity: opacityNum }}>
+        <header className="App-header">
           <HeaderPage></HeaderPage>
         </header>
         <Routes>

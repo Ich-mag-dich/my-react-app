@@ -1,0 +1,10 @@
+.oneBox {
+  background-color: #e2e2e2;
+  width: 380px;
+  margin: auto;
+  align-items: center;
+  min-height: 500px;
+  font-family: Montserrat, source-code-pro, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
