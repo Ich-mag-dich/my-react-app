@@ -1,4 +1,4 @@
-# Weather app
+# Weather app and other things
 
 with react and vite
 
