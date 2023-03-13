@@ -12,16 +12,19 @@
     "Helvetica Neue", sans-serif;
 }
 .HeaderBtn {
-  margin: 50px;
+  margin: 10px;
   color: #575757;
   padding: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
+  /* padding-right: 20px; */
+  /* padding-left: 20px; */
   background-color: #e2e2e2;
   font-style: normal;
   text-decoration: none;
   transition: 0.2s;
   border-radius: 5px;
+  display: inline-block;
+  width: 100px;
+  font-weight: 500;
 }
 
 @media (min-width: 800px) {

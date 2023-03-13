@@ -23,6 +23,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   transition: all 0.5s;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .App-link {
