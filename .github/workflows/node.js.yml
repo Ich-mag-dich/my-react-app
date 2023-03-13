@@ -22,7 +22,6 @@ jobs:
           script: |
             cd ~/dev/my-weather-app
             sudo pm2 stop 0
-            sudo rm pnpm-lock.yaml
             sudo git pull
             sudo pnpm update
             sudo pnpm build
