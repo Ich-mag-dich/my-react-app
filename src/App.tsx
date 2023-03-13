@@ -106,7 +106,7 @@ function App() {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
           setOpacity(1);
-        } catch (error) {}
+        } catch (error) { }
       });
   };
   const getLatLon = (city: string) => {
@@ -148,7 +148,7 @@ function App() {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
           setOpacity(1);
-        } catch (e) {}
+        } catch (e) { }
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
