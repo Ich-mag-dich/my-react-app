@@ -25,5 +25,5 @@ jobs:
             sudo rm pnpm-lock.yaml
             sudo git pull
             sudo pnpm update
-            sudo npm run build
+            sudo pnpm build
             sudo pm2 restart 0 --update-env
