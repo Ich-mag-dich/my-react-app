@@ -23,6 +23,6 @@ jobs:
             cd ~/dev/my-weather-app
             sudo pm2 stop 0
             sudo git pull
-            sudo pnpm install
+            sudo pnpm update
             sudo pnpm build
             sudo pm2 restart 0 --update-env
