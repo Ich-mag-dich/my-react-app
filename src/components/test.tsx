@@ -17,6 +17,7 @@ function Test() {
         <h3>
           test test
         </h3>
+        <a href="/test/1" className="HeaderBtn">test2</a>
       </div>
     </div>
   );

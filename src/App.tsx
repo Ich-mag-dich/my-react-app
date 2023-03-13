@@ -13,6 +13,7 @@ import CityDiv from "./components/cityComponent";
 import Test from "./components/test";
 import NotFound from "./components/notFound";
 import HeaderPage from "./components/HeaderPage";
+import Test2 from "./components/Test2";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Cookies, useCookies } from "react-cookie";
 
@@ -216,6 +217,7 @@ function App() {
             }
           ></Route>
           <Route path="/test" element={<Test></Test>}></Route>
+          <Route path="/test/1" element={<Test2></Test2>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
       </div>
