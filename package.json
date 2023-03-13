@@ -19,6 +19,7 @@
     "@sfirew/mc-motd-parser": "^1.1.0",
     "@testing-library/react": "^14.0.0",
     "@types/babel__core": "^7.20.0",
+    "@types/node": "^18.15.1",
     "@types/react-helmet": "^6.1.6",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
