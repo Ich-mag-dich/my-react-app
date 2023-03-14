@@ -23,7 +23,7 @@ jobs:
             cd ~/dev/my-weather-app
             sudo pm2 stop 0
             sudo git fetch --all
-            sudo git reset --hard origin/master
+            sudo git reset --hard
             sudo git pull
             sudo pnpm update
             sudo pnpm build
