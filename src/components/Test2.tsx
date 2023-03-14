@@ -5,6 +5,9 @@ function Test2() {
       <h1>
         test2
       </h1>
+      <h2>
+        update test
+      </h2>
     </div>
   )
 
