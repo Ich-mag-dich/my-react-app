@@ -1,7 +1,12 @@
 import "./css/Test.css"
 import { Link } from "react-router-dom";
 
-function Test() {
+interface ITestProps {
+  cityName: any
+  cookies: any
+}
+function Test(props: ITestProps) {
+  const { cityName, cookies } = props
   return (
     <div>
       <div className="box oneBox">
@@ -16,8 +21,9 @@ function Test() {
 
         </h3>
         <h3>
-          test test
+          city name : {cityName}
         </h3>
+        <h5>cookies : {cookies}</h5>
         <Link to="/test/1" className="HeaderBtn">test2</Link>
       </div>
     </div>

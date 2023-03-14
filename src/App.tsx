@@ -215,12 +215,12 @@ function App() {
               </div>
             }
           ></Route>
-          <Route path="/test" element={<Test></Test>}></Route>
+          <Route path="/test" element={<Test cityName={city} cookies={cookies.city}></Test>}></Route>
           <Route path="/test/1" element={<Test2></Test2>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
-      </div>
-    </BrowserRouter>
+      </div >
+    </BrowserRouter >
   );
 }
 
