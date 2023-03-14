@@ -48,6 +48,7 @@ function WeatherDiv(props: IWeatherProps) {
       return `${time}`;
     }
   };
+
   const iconname: string = weather?.current?.weather[0]?.icon ?? "";
   console.log(cityName, countryName);
   return (
@@ -73,7 +74,7 @@ function WeatherDiv(props: IWeatherProps) {
         {cityName}, {countryName}
         <button
           className="bookmark"
-          onClick={() => {
+          onClick={(q) => {
             let oldCookie: string[];
             if (Symbol.iterator in Object(cookies?.city)) {
               oldCookie = [...cookies.city];
@@ -85,11 +86,18 @@ function WeatherDiv(props: IWeatherProps) {
               oldCookie.push(cityName);
               alert(`즐겨찾기에 추가가 완료되었습니다. (${cityName})`);
             } else {
-              const indexA = oldCookie.indexOf(cityName);
-              //이건 뭐노?
-              //ㄴ 북마크 삭제하는거 ㅇㅇ;
-              if (indexA > -1) {
-                delete oldCookie[indexA];
+              if (!confirm("즐겨찾기에서 삭제할까요?")) {
+                q.preventDefault()
+              } else {
+                const indexA = oldCookie.indexOf(cityName);
+                //이건 뭐노?
+                //ㄴ 북마크 삭제하는거 ㅇㅇ;
+                if (indexA > -1) {
+                  // delete oldCookie[indexA];
+                  oldCookie.splice(indexA, 1);
+                }
+
+                alert(`즐겨찾기에서 삭제했습니다. (${cityName})`);
               }
               oldCookie.forEach((e) => {
                 if (e === null) {
@@ -97,7 +105,6 @@ function WeatherDiv(props: IWeatherProps) {
                   oldCookie.splice(oldCookie.indexOf(e), 1);
                 }
               });
-              alert(`즐겨찾기에서 삭제했습니다. (${cityName})`);
             }
             saveCookies("city", oldCookie);
           }}

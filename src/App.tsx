@@ -155,7 +155,6 @@ function App() {
     console.log("handleonclick");
     getLatLon(city_name.toLowerCase());
   };
-
   return (
     <BrowserRouter>
       <div className="App" style={{ opacity: opacityNum }}>
@@ -196,7 +195,7 @@ function App() {
                   </div>
                 </div>
 
-                {cookieTrue ? (
+                {cookies.city.length !== 0 ? (
                   <div className="box box2">
                     {cookies.city.map((x: string, i: number) => {
                       return (

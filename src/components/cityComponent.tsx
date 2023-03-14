@@ -24,14 +24,18 @@ function CityDiv(props: ICityProps) {
       return true;
     }
   };
-  const removeAllCookie = () => {
+  const removeAllCookie = (e: any) => {
     console.log(test111());
-    if (test111()) {
-      const nullCookie: string[] = [];
-      setCookies("city", nullCookie);
-      alert("모든 즐겨찾기를 삭제했습니다.");
+    if (!confirm("모든 즐겨찾기를 삭제할까요?")) {
+      e.preventDefault();
     } else {
-      alert("삭제할 즐겨찾기가 없습니다.");
+      if (test111()) {
+        const nullCookie: string[] = [];
+        setCookies("city", nullCookie);
+        alert("모든 즐겨찾기를 삭제했습니다.");
+      } else {
+        alert("삭제할 즐겨찾기가 없습니다.");
+      }
     }
   };
   return (
@@ -41,7 +45,7 @@ function CityDiv(props: ICityProps) {
           className="clearBookmarks "
           onClick={() => {
             test111();
-            removeAllCookie();
+            removeAllCookie(Event);
           }}
         >
           Clear Bookmarks
