@@ -24,6 +24,7 @@ jobs:
             sudo rm package.json
             sudo rm pnpm-lock.yaml
             sudo pm2 stop 0
+            sudo git fetch
             sudo git pull
             sudo pnpm update
             sudo pnpm build
