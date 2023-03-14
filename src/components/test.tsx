@@ -1,4 +1,5 @@
 import "./css/Test.css"
+import { Link } from "react-router-dom";
 
 function Test() {
   return (
@@ -17,7 +18,7 @@ function Test() {
         <h3>
           test test
         </h3>
-        <a href="/test/1" className="HeaderBtn">test2</a>
+        <Link to="/test/1" className="HeaderBtn">test2</Link>
       </div>
     </div>
   );

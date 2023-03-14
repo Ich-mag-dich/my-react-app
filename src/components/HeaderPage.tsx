@@ -1,13 +1,14 @@
+import { Link } from "react-router-dom";
 import "./css/HeaderPage.css";
 function HeaderPage() {
   return (
     <div className="HeaderDiv">
-      <a href="/" className="HeaderBtn">
+      <Link to="/" className="HeaderBtn">
         Home
-      </a>
-      <a href="/test" className="HeaderBtn">
+      </Link>
+      <Link to="/test" className="HeaderBtn">
         Test
-      </a>
+      </Link>
     </div>
   );
 }
