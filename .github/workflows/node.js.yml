@@ -21,6 +21,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/dev/my-weather-app
+            sudo rm package.json
+            sudo rm pnpm-lock.yaml
             sudo pm2 stop 0
             sudo git pull
             sudo pnpm update
