@@ -106,7 +106,7 @@ function App() {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
           setOpacity(1);
-        } catch (error) { }
+        } catch (error) {}
       });
   };
   const getLatLon = (city: string) => {
@@ -148,7 +148,7 @@ function App() {
           console.log(e.response.data.message);
           alert(`Error: ${e.response.data.message}`);
           setOpacity(1);
-        } catch (e) { }
+        } catch (e) {}
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
@@ -215,12 +215,15 @@ function App() {
               </div>
             }
           ></Route>
-          <Route path="/test" element={<Test cityName={city} cookies={cookies.city}></Test>}></Route>
+          <Route
+            path="/test"
+            element={<Test cityName={city} cookies={cookies.city}></Test>}
+          ></Route>
           <Route path="/test/1" element={<Test2></Test2>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
-      </div >
-    </BrowserRouter >
+      </div>
+    </BrowserRouter>
   );
 }
 
