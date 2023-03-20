@@ -13,7 +13,7 @@ import CityDiv from "./components/cityComponent";
 import Test from "./components/test";
 import NotFound from "./components/notFound";
 import HeaderPage from "./components/HeaderPage";
-import Test2 from "./components/Test2";
+import TestinTest from "./components/TestinTest";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Cookies, useCookies } from "react-cookie";
 
@@ -219,7 +219,7 @@ function App() {
             path="/test"
             element={<Test cityName={city} cookies={cookies.city}></Test>}
           ></Route>
-          <Route path="/test/1" element={<Test2></Test2>}></Route>
+          <Route path="/test/1" element={<TestinTest></TestinTest>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
       </div>

@@ -87,7 +87,7 @@ function WeatherDiv(props: IWeatherProps) {
               alert(`즐겨찾기에 추가가 완료되었습니다. (${cityName})`);
             } else {
               if (!confirm("즐겨찾기에서 삭제할까요?")) {
-                q.preventDefault()
+                q.preventDefault();
               } else {
                 const indexA = oldCookie.indexOf(cityName);
                 //이건 뭐노?
