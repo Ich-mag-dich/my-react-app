@@ -80,7 +80,6 @@ function App() {
   try {
     cookieTrue = cookies.city[0];
   } catch (error) {
-    console.log("asdef");
     saveCookies("city", []);
     cookieTrue = cookies.city[0];
     location.reload();
@@ -152,7 +151,7 @@ function App() {
       });
   };
   const handleOnClick = (e: any, city_name: string) => {
-    console.log("handleonclick");
+    console.log("handle on click");
     getLatLon(city_name.toLowerCase());
   };
   return (
