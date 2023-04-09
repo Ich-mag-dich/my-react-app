@@ -5,11 +5,11 @@ with react and vite
 #### Available Scripts
 
 ```node
-npm run start
-npm run build
-npm run serve
-npm run codeSpaceStart
-npm run test
+pnpm start
+pnpm build
+pnpm serve
+pnpm codeSpaceStart
+pnpm test
 ```
 
 #### package.json
