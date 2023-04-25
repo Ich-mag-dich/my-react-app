@@ -2,6 +2,8 @@
 
 with react and vite.
 
+## moved to <https://github.com/Ich-mag-dich/my-next-app>
+
 #### Available Scripts
 
 ```node
